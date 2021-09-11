@@ -2,6 +2,7 @@ extends Control
 
 onready var actions_dropdown := $ActionsDropdown
 onready var action_input_display := $ActionInputDisplay
+onready var press_key_indicator := $PressKeyIndicator
 
 
 onready var raw_action_list: Array = InputMap.get_actions()
@@ -42,6 +43,8 @@ func _process(delta) -> void:
 	selected_action = actions_dropdown.get_selected_id()
 	
 	action_input_display.text = get_action_input_display_text()
+	
+	press_key_indicator.visible = checking_for_inputs
 
 
 func _input(event) -> void:
@@ -51,9 +54,16 @@ func _input(event) -> void:
 	if checking_for_inputs:
 		if event is InputEventKey:
 			if event.pressed:
-				checking_for_inputs = false
-				InputMap.action_add_event(action_list[selected_action], event)
-				accept_event()
+				if event.scancode != KEY_ESCAPE:
+					
+					checking_for_inputs = false
+					
+					InputMap.action_add_event(action_list[selected_action], event)
+					accept_event()
+					
+				else: # if key press is escape
+					
+					checking_for_inputs = false
 
 
 func get_action_input_display_text() -> String:
@@ -69,7 +79,7 @@ func get_action_input_display_text() -> String:
 	return str(selected_action_events_strings).substr(1, str(selected_action_events_strings).length() - 2)
 
 
-func _on_ResetInput_pressed() -> void:
+func _on_ClearInput_pressed() -> void:
 	
 	# delete all inputs of selected action
 	InputMap.action_erase_events(action_list[selected_action])
