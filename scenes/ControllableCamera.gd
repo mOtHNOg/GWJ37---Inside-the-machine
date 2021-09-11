@@ -15,6 +15,13 @@ const DASH_DECELERATE_SPEED = 18.0
 const DASH_BUFFER_TIME = 8
 var dash_buffer_time_left: int = 0
 
+# motion blur
+onready var motion_blur := $MotionBlur
+onready var blur_mat = motion_blur.get_material()
+var blur_strength: float = 0
+const MAX_BLUR_STRENGTH = 0.086
+const UNBLUR_SPEED = 6.0
+
 func _physics_process(delta):
 	
 	# apply movement
@@ -27,8 +34,10 @@ func _physics_process(delta):
 	
 	# dashing stuff
 	
-	# decelerate to normal speed
+	# decelerate to normal speed (also unblur)
 	move_speed = lerp(move_speed, BASE_MOVE_SPEED, DASH_DECELERATE_SPEED * delta)
+	blur_strength = lerp(blur_strength, 0, UNBLUR_SPEED * delta)
+	
 	if move_speed - BASE_MOVE_SPEED < 15.0:
 		move_speed = BASE_MOVE_SPEED
 		dashing = false
@@ -38,7 +47,6 @@ func _physics_process(delta):
 		dash_buffer_time_left -= 1
 	
 	if dashing == false and dash_buffer_time_left > 0:
-		print(dash_buffer_time_left)
 		movement_direction = get_movement_direction()
 		dash()
 		dash_buffer_time_left = 0
@@ -50,6 +58,9 @@ func _physics_process(delta):
 		else:
 			# start input buffer timer
 			dash_buffer_time_left = DASH_BUFFER_TIME
+	
+	# apply blur strength 
+	blur_mat.set_shader_param("strength", blur_strength)
 
 func get_movement_direction() -> Vector2:
 	return Vector2(
@@ -60,3 +71,9 @@ func get_movement_direction() -> Vector2:
 func dash() -> void:
 	dashing = true
 	move_speed = BASE_MOVE_SPEED * DASH_SPEED_MULTIPLTER
+	
+	# apply motion blur
+	var movement_angle: float = -rad2deg(movement_direction.angle())
+	blur_mat.set_shader_param("angle_degrees", movement_angle)
+	
+	blur_strength = MAX_BLUR_STRENGTH
