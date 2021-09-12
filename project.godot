@@ -8,6 +8,16 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "Control",
+"class": "BaseUIElement",
+"language": "GDScript",
+"path": "res://scripts/BaseUIElement.gd"
+} ]
+_global_script_class_icons={
+"BaseUIElement": ""
+}
+
 [application]
 
 config/name="GWJ37 - Inside the machine"
