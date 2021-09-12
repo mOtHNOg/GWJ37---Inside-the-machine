@@ -19,7 +19,7 @@ var dash_buffer_time_left: int = 0
 onready var motion_blur := $MotionBlur
 onready var blur_mat = motion_blur.get_material()
 var blur_strength: float = 0
-const MAX_BLUR_STRENGTH = 0.086
+const MAX_BLUR_STRENGTH = 0.09
 const UNBLUR_SPEED = 6.0
 
 # settings
@@ -94,6 +94,7 @@ func get_movement_direction() -> Vector2:
 		).normalized()
 
 func dash() -> void:
+	AudioManager.play("res://assets/sound/dash1.ogg", {"pitch_scale" : rand_range(0.933, 1.072)})
 	dashing = true
 	move_speed = BASE_MOVE_SPEED * DASH_SPEED_MULTIPLTER
 	
