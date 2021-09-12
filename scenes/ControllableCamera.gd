@@ -22,7 +22,14 @@ var blur_strength: float = 0
 const MAX_BLUR_STRENGTH = 0.086
 const UNBLUR_SPEED = 6.0
 
-func _physics_process(delta):
+# settings
+
+# nauseating camera
+var nauseating_rotation: float = 0.0
+const ROTATION_AMOUNT_PER_FRAME = 100.0
+const ROTOFUDGE = 8.0
+
+func _physics_process(delta) -> void:
 	
 	# apply movement
 	
@@ -61,6 +68,25 @@ func _physics_process(delta):
 	
 	# apply blur strength 
 	blur_mat.set_shader_param("strength", blur_strength)
+	
+	
+	# NAUSEATING CAMERA WOOOOOOOOO!!!!!
+	
+	if Settings.nauseating_camera:
+		nauseating_rotation += rand_range(ROTATION_AMOUNT_PER_FRAME * 0.1, ROTATION_AMOUNT_PER_FRAME) * delta
+		rotation_degrees = lerp(rotation_degrees,
+			sin(global_position.length() * 0.01) * 360 + nauseating_rotation, ROTOFUDGE * delta)
+		
+		# lerp zoom to make the changes slightly more gradual (you're welcome)
+		zoom = lerp(zoom, Vector2(rand_range(0.5, 2), rand_range(0.5, 2)), ROTOFUDGE * delta)
+	else:
+		zoom = Vector2(1, 1)
+		nauseating_rotation = 0
+		
+		var nearest_rotation = stepify(rotation_degrees, 360)
+		rotation_degrees = lerp(rotation_degrees, nearest_rotation, ROTOFUDGE * delta)
+		if rotation_degrees == nearest_rotation:
+			rotation_degrees = 0
 
 func get_movement_direction() -> Vector2:
 	return Vector2(

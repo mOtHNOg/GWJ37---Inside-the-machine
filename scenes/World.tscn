@@ -1,17 +1,24 @@
 [gd_scene load_steps=4 format=2]
 
+[ext_resource path="res://scenes/ui/MyCheckBox.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/ControllableCamera.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/ui/InputConfig.tscn" type="PackedScene" id=3]
-[ext_resource path="res://scenes/World.gd" type="Script" id=4]
 
 [node name="World" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-script = ExtResource( 4 )
 __meta__ = {
-"_edit_use_anchors_": false
+"_edit_lock_": true
 }
 
 [node name="ControllableCamera" parent="." instance=ExtResource( 2 )]
 
 [node name="InputConfig" parent="." instance=ExtResource( 3 )]
+
+[node name="MyCheckBox" parent="." instance=ExtResource( 1 )]
+margin_left = 592.0
+margin_top = 370.0
+margin_right = 592.0
+margin_bottom = 370.32
+label_text = "Nauseating Camera"
+setting = "nauseating_camera"

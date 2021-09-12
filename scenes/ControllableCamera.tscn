@@ -4,6 +4,7 @@
 [ext_resource path="res://resources/materials/MotionBlurScreenShader.tres" type="Material" id=2]
 
 [node name="ControllableCamera" type="Camera2D"]
+rotating = true
 current = true
 script = ExtResource( 1 )
 

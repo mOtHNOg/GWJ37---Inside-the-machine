@@ -1,0 +1,44 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/font/default_font.tres" type="DynamicFont" id=1]
+[ext_resource path="res://scenes/ui/MyCheckBox.gd" type="Script" id=2]
+
+[sub_resource type="StyleBoxEmpty" id=1]
+
+[node name="MyCheckBox" type="Control"]
+anchor_right = 0.275
+anchor_bottom = 0.044
+margin_bottom = 0.319998
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+margin_right = 288.0
+margin_bottom = 33.0
+grow_horizontal = 0
+custom_fonts/font = ExtResource( 1 )
+text = "checkbox"
+align = 2
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CheckBox" type="CheckBox" parent="." groups=[
+"button",
+]]
+margin_left = 312.0
+margin_top = 4.0
+margin_right = 336.0
+margin_bottom = 28.0
+rect_scale = Vector2( 2, 2 )
+rect_pivot_offset = Vector2( 12, 12 )
+focus_mode = 0
+custom_styles/focus = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="toggled" from="CheckBox" to="." method="_on_CheckBox_toggled"]
