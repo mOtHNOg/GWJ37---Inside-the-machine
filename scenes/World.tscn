@@ -15,10 +15,18 @@ __meta__ = {
 
 [node name="InputConfig" parent="." instance=ExtResource( 3 )]
 
-[node name="MyCheckBox" parent="." instance=ExtResource( 1 )]
-margin_left = 592.0
-margin_top = 370.0
-margin_right = 592.0
-margin_bottom = 370.32
+[node name="Checkboxes" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NauseatingCamera" parent="Checkboxes" instance=ExtResource( 1 )]
+margin_left = 1098.0
+margin_top = 428.0
+margin_right = 1098.0
+margin_bottom = 428.32
 label_text = "Nauseating Camera"
 setting = "nauseating_camera"
+show_warning = true

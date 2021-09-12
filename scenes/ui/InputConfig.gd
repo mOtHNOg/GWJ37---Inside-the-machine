@@ -7,7 +7,7 @@ onready var press_key_indicator := $PressKeyIndicator
 
 onready var raw_action_list: Array = InputMap.get_actions()
 var action_list: Array = []
-var excluded_action_text: Array = ["ui", "mouse"]
+var excluded_action_text: Array = ["ui", "mouse", "hidden"]
 
 var selected_action: int
 
