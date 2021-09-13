@@ -39,11 +39,11 @@ func play(sound_path: String, stream_data: Dictionary = {}) -> void:
 	p.play()
 
 
-func _button_click(garbage = null) -> void:
+func _button_click(_garbage = null) -> void:
 	play("res://assets/sound/button/click1.ogg", {"pitch_scale" : rand_range(0.75, 1.163)})
 
-func _button_press(garbage = null) -> void:
+func _button_press(_garbage = null) -> void:
 	play("res://assets/sound/button/press1.ogg", {"pitch_scale" : rand_range(0.86, 1.163)})
 
-func _button_release(garbage = null) -> void:
+func _button_release(_garbage = null) -> void:
 	play("res://assets/sound/button/release1.ogg", {"pitch_scale" : rand_range(0.86, 1.163)})

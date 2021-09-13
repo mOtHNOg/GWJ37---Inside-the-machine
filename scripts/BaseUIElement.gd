@@ -10,7 +10,7 @@ export var warning_text: String
 
 export var setting: String
 
-func _process(delta) -> void:
+func _process(_delta) -> void:
 	label.text = label_text
 	
 	if warning != null:

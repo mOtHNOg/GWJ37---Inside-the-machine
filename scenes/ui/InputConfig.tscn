@@ -40,9 +40,9 @@ __meta__ = {
 "button",
 ]]
 margin_left = 97.0
-margin_top = 32.0
+margin_top = 48.0
 margin_right = 617.0
-margin_bottom = 176.0
+margin_bottom = 160.0
 focus_mode = 0
 theme = SubResource( 6 )
 custom_icons/arrow = SubResource( 1 )
@@ -65,9 +65,9 @@ __meta__ = {
 
 [node name="PressKeyIndicator" type="Label" parent="."]
 margin_left = 104.0
-margin_top = 192.0
-margin_right = 736.0
-margin_bottom = 264.0
+margin_top = 176.0
+margin_right = 761.0
+margin_bottom = 248.0
 custom_fonts/font = ExtResource( 2 )
 text = "Press key to add input, press ESC to cancel."
 valign = 1

@@ -80,6 +80,7 @@ func _physics_process(delta) -> void:
 	blur_mat.set_shader_param("strength", blur_strength)
 	
 	# apply zoom w/ multiplier
+#	zoom = cam_zoom * ( 1 - Settings.cam_zoom_multiplier )
 	zoom = cam_zoom * Settings.cam_zoom_multiplier
 	
 	# NAUSEATING CAMERA WOOOOOOOOO!!!!!
