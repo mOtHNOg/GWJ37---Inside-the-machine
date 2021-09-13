@@ -15,7 +15,7 @@ const DASH_DECELERATE_SPEED = 18.0
 const DASH_BUFFER_TIME = 8
 var dash_buffer_time_left: int = 0
 
-const MIN_DASH_VOLUME = 26.0 # as absolute value 
+const MIN_DASH_VOLUME = 24.0 # as absolute value 
 
 # motion blur
 onready var motion_blur := $MotionBlur
@@ -83,7 +83,6 @@ func _physics_process(delta) -> void:
 		
 		if rand_rotation_dir == 0:
 			rand_rotation_dir = rotation_directions[int(rand_range(0, rotation_directions.size()))]
-			print(rand_rotation_dir)
 		
 		nauseating_rotation = lerp(nauseating_rotation, 
 			0 + ( rand_range(-ROTATION_AMOUNT_PER_FRAME, ROTATION_AMOUNT_PER_FRAME) * rand_rotation_dir * delta ),
@@ -113,9 +112,9 @@ func get_movement_direction() -> Vector2:
 
 
 func dash() -> void:
-	# dash volume is effected by speed multiplier
 	
-	var dash_volume = 0 if Settings.cam_speed_multiplier > 1.0 else MIN_DASH_VOLUME * Settings.cam_speed_multiplier - MIN_DASH_VOLUME
+	# dash volume is effected by speed multiplier
+	var dash_volume: float = 0 if Settings.cam_speed_multiplier > 1.0 else MIN_DASH_VOLUME * Settings.cam_speed_multiplier - MIN_DASH_VOLUME
 	AudioManager.play("res://assets/sound/dash1.ogg", {"volume_db" : dash_volume, "pitch_scale" : rand_range(0.933, 1.072)})
 	
 	

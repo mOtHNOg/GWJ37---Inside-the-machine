@@ -1,9 +1,12 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://scenes/ui/MyCheckBox.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/ControllableCamera.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/ui/InputConfig.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/ui/MySlider.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/art/backgrounds/sbits and sbobs.png" type="Texture" id=5]
+[ext_resource path="res://assets/art/backgrounds/bits and bobs.png" type="Texture" id=6]
+[ext_resource path="res://assets/art/backgrounds/backest ground.png" type="Texture" id=7]
 
 [node name="World" type="Control"]
 anchor_right = 1.0
@@ -11,6 +14,34 @@ anchor_bottom = 1.0
 __meta__ = {
 "_edit_lock_": true
 }
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 0.125, 0.125 )
+motion_mirroring = Vector2( 1280, 720 )
+
+[node name="bits and bobs" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+modulate = Color( 1, 1, 1, 0.333333 )
+texture = ExtResource( 7 )
+centered = false
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 0.25, 0.25 )
+motion_mirroring = Vector2( 1280, 720 )
+
+[node name="bits and bobs" type="Sprite" parent="ParallaxBackground/ParallaxLayer2"]
+modulate = Color( 1, 1, 1, 0.686275 )
+texture = ExtResource( 5 )
+centered = false
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 0.5, 0.5 )
+motion_mirroring = Vector2( 1280, 720 )
+
+[node name="bits and bobs" type="Sprite" parent="ParallaxBackground/ParallaxLayer3"]
+texture = ExtResource( 6 )
+centered = false
 
 [node name="ControllableCamera" parent="." instance=ExtResource( 2 )]
 position = Vector2( 640, 360 )

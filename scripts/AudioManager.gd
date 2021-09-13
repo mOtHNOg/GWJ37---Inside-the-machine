@@ -30,7 +30,6 @@ func play(sound_path: String, stream_data: Dictionary = {}) -> void:
 		
 		if "volume_db" in stream_data:
 			p.volume_db = stream_data["volume_db"]
-			print(p.volume_db)
 		
 		if "pitch_scale" in stream_data:
 			p.pitch_scale = stream_data["pitch_scale"]
@@ -39,8 +38,9 @@ func play(sound_path: String, stream_data: Dictionary = {}) -> void:
 	add_child(p)
 	p.play()
 
+
 func _button_click(garbage = null) -> void:
-	play("res://assets/sound/button/click1.ogg", {"pitch_scale" : rand_range(0.86, 1.163)})
+	play("res://assets/sound/button/click1.ogg", {"pitch_scale" : rand_range(0.75, 1.163)})
 
 func _button_press(garbage = null) -> void:
 	play("res://assets/sound/button/press1.ogg", {"pitch_scale" : rand_range(0.86, 1.163)})
