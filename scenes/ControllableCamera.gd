@@ -1,5 +1,8 @@
 extends Camera2D
 
+# misc
+var cam_zoom: Vector2 = Vector2(1, 1)
+
 # basic movement vars
 var movement_direction: Vector2 = Vector2.ZERO
 var move_vec: Vector2 = Vector2.ZERO
@@ -76,6 +79,8 @@ func _physics_process(delta) -> void:
 	# apply blur strength 
 	blur_mat.set_shader_param("strength", blur_strength)
 	
+	# apply zoom w/ multiplier
+	zoom = cam_zoom * Settings.cam_zoom_multiplier
 	
 	# NAUSEATING CAMERA WOOOOOOOOO!!!!!
 	
@@ -91,7 +96,7 @@ func _physics_process(delta) -> void:
 		rotation_degrees =  nauseating_rotation
 		
 		# lerp zoom to make the changes slightly more gradual (you're welcome)
-		zoom = lerp(zoom, Vector2(rand_range(0.5, 2), rand_range(0.25, 2)), ZOOM_DETERIATION_TO_EYES * delta)
+		cam_zoom = lerp(cam_zoom, Vector2(rand_range(0.5, 2), rand_range(0.25, 2)), ZOOM_DETERIATION_TO_EYES * delta)
 	
 	else:
 		rand_rotation_dir = 0

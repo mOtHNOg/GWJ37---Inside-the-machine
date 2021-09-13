@@ -26,6 +26,7 @@ margin_top = 36.0
 margin_right = 192.0
 margin_bottom = 52.0
 rect_scale = Vector2( 1.5, 1.5 )
+focus_mode = 0
 max_value = 2.0
 step = 0.1
 value = 1.0

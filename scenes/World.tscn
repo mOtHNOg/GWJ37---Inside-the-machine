@@ -80,3 +80,13 @@ anchor_right = 2.57813
 anchor_bottom = 11.3444
 label_text = "Camera Speed"
 setting = "cam_speed_multiplier"
+
+[node name="CamZoom" parent="Sliders" instance=ExtResource( 4 )]
+anchor_left = 17.55
+anchor_top = 14.25
+anchor_right = 17.7781
+anchor_bottom = 14.3444
+label_text = "Camera Zoom"
+setting = "cam_zoom_multiplier"
+custom_min_value = 0.5
+custom_max_value = 2.0
