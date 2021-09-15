@@ -101,7 +101,7 @@ func _physics_process(delta) -> void:
 	
 	else:
 		rand_rotation_dir = 0
-		zoom = lerp(zoom, Vector2(1, 1), ROTOFUDGE * delta)
+		cam_zoom = lerp(cam_zoom, Vector2(1, 1), ROTOFUDGE * delta)
 		nauseating_rotation = 0
 		
 		var nearest_rotation = stepify(rotation_degrees, 360)

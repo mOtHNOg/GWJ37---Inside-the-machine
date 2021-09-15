@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://scenes/ui/MyButton.gd" type="Script" id=1]
+
+[node name="MyButton" type="Button" groups=[
+"button",
+]]
+anchor_right = 0.049625
+anchor_bottom = 0.0446667
+margin_right = 0.48
+margin_bottom = -0.16
+focus_mode = 0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
+count_as_interaction = true
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

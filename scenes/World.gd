@@ -7,7 +7,7 @@ func _ready() -> void:
 		shuffle_positions()
 
 func shuffle_positions() -> void:
-	var shuffle_node_parents: Array = [$Checkboxes, $Sliders]
+	var shuffle_node_parents: Array = [$Checkboxes, $Sliders, $Buttons]
 	var shuffle_nodes: Array = []
 	var shuffle_nodes_pos: Array = []
 	
@@ -26,5 +26,4 @@ func shuffle_positions() -> void:
 	
 	# apply the randomized positions to the nodes
 	for i in shuffle_nodes.size():
-		print(shuffle_nodes[i])
 		shuffle_nodes[i].rect_position = shuffle_nodes_pos[i]

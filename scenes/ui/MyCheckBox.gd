@@ -13,4 +13,6 @@ func _process(_delta) -> void:
 		checkbox.pressed = Settings.get(setting)
 
 func _on_CheckBox_toggled(button_pressed):
+	add_to_interactions()
+	
 	Settings.set(setting, button_pressed)

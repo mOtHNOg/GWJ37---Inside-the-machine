@@ -20,6 +20,8 @@ func _process(delta):
 		slider.value = Settings.get(setting)
 
 func _on_HSlider_value_changed(value):
+	add_to_interactions()
+	
 	Settings.set(setting, value)
 
 

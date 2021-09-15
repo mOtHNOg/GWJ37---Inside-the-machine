@@ -1,10 +1,13 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://scenes/ui/MyCheckBox.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/ControllableCamera.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/ui/InputConfig.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/ui/MySlider.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/World.gd" type="Script" id=5]
+[ext_resource path="res://assets/font/default_font.tres" type="DynamicFont" id=6]
+[ext_resource path="res://scenes/ui/MyButton.tscn" type="PackedScene" id=7]
+[ext_resource path="res://assets/font/default_font_medium.tres" type="DynamicFont" id=8]
 
 [node name="World" type="Control"]
 anchor_right = 1.0
@@ -13,6 +16,7 @@ script = ExtResource( 5 )
 __meta__ = {
 "_edit_lock_": true
 }
+shuffle_positions = true
 
 [node name="ControllableCamera" parent="." instance=ExtResource( 2 )]
 position = Vector2( 640, 360 )
@@ -28,20 +32,22 @@ __meta__ = {
 }
 
 [node name="NauseatingCamera" parent="Checkboxes" instance=ExtResource( 1 )]
-margin_left = 1098.0
-margin_top = 428.0
-margin_right = 1098.0
-margin_bottom = 428.32
+margin_left = 1338.0
+margin_top = 330.0
+margin_right = 1338.0
+margin_bottom = 330.32
 label_text = "Nauseating Camera"
 warning_text = "DO NOT PRESS THIS"
 setting = "nauseating_camera"
 
 [node name="SecretCheckbox" parent="Checkboxes" instance=ExtResource( 1 )]
-margin_left = 508.0
-margin_top = 616.0
-margin_right = 877.0
-margin_bottom = 654.24
+margin_left = -160.0
+margin_top = 280.0
+margin_right = 209.0
+margin_bottom = 318.24
 rect_scale = Vector2( 0.05, 0.05 )
+count_as_interaction = false
+count_but_not_to_total = true
 label_text = "Secret Checkbox"
 
 [node name="Sliders" type="Control" parent="."]
@@ -53,19 +59,57 @@ __meta__ = {
 }
 
 [node name="CamSpeed" parent="Sliders" instance=ExtResource( 4 )]
-anchor_left = 2.35
-anchor_top = 11.25
-anchor_right = 2.57813
-anchor_bottom = 11.3444
+anchor_left = -3.95
+anchor_top = 13.45
+anchor_right = -3.72187
+anchor_bottom = 13.5444
 label_text = "Camera Speed"
 setting = "cam_speed_multiplier"
 
 [node name="CamZoom" parent="Sliders" instance=ExtResource( 4 )]
-anchor_left = 17.55
-anchor_top = 14.25
-anchor_right = 17.7781
-anchor_bottom = 14.3444
+anchor_left = 18.55
+anchor_top = 14.65
+anchor_right = 18.7781
+anchor_bottom = 14.7444
 label_text = "Camera Zoom"
 setting = "cam_zoom_multiplier"
 custom_min_value = 0.1
 custom_max_value = 1.4
+
+[node name="Buttons" type="Control" parent="."]
+margin_right = 122.0
+margin_bottom = 46.0
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="ExitButton" parent="Buttons" instance=ExtResource( 7 )]
+anchor_left = 1.96721
+anchor_top = 7.73913
+anchor_right = 2.06164
+anchor_bottom = 8.17739
+custom_fonts/font = ExtResource( 6 )
+text = "Exit Menu"
+count_as_interaction = false
+press_func = "win"
+
+[node name="ChordButton" parent="Buttons" instance=ExtResource( 7 )]
+anchor_left = 8.68852
+anchor_top = -1.82609
+anchor_right = 10.5862
+anchor_bottom = -0.974783
+custom_fonts/font = ExtResource( 6 )
+text = "Random Chord"
+press_func = "show_random_chord"
+child_as_argument = true
+
+[node name="Label" type="Label" parent="Buttons/ChordButton"]
+margin_left = 2.0
+margin_top = 48.0
+margin_right = 42.0
+margin_bottom = 81.0
+custom_fonts/font = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
