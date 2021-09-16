@@ -1,10 +1,11 @@
 extends Control
 
-export var shuffle_positions: bool = false
+export var call_shuffle_positions: bool = false
 
 func _ready() -> void:
-	if shuffle_positions:
+	if call_shuffle_positions:
 		shuffle_positions()
+	print(get_node("/root/Settings"))
 
 func shuffle_positions() -> void:
 	var shuffle_node_parents: Array = [$Checkboxes, $Sliders, $Buttons]
@@ -27,3 +28,8 @@ func shuffle_positions() -> void:
 	# apply the randomized positions to the nodes
 	for i in shuffle_nodes.size():
 		shuffle_nodes[i].rect_position = shuffle_nodes_pos[i]
+
+
+func _on_World_tree_entered():
+	print("aa")
+	AudioManager.add_button_signals()

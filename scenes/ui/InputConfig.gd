@@ -39,7 +39,7 @@ func _ready() -> void:
 		actions_dropdown.add_item(action)
 
 
-func _process(delta) -> void:
+func _process(_delta) -> void:
 	selected_action = actions_dropdown.get_selected_id()
 	
 	action_input_display.text = get_action_input_display_text()

@@ -9,7 +9,7 @@ var do_time: bool = true
 func _ready():
 	randomize()
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if do_time:
 		time += 1
 

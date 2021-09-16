@@ -2,17 +2,10 @@ extends Node
 
 func _ready() -> void:
 	
-	# connect buttons to on pressed function
 	
-	for button in get_tree().get_nodes_in_group("button"):
-		if button is BaseButton:
-			if button is OptionButton:
-				button.connect("pressed", self, "_button_press")
-				
-				var popup: PopupMenu = button.get_popup()
-				popup.connect("id_pressed", self, "_button_release")
-			else:
-				button.connect("pressed", self, "_button_click")
+	
+	add_button_signals()
+
 
 
 
@@ -33,11 +26,27 @@ func play(sound_path: String, stream_data: Dictionary = {}) -> void:
 		
 		if "pitch_scale" in stream_data:
 			p.pitch_scale = stream_data["pitch_scale"]
+		
+		if "bus" in stream_data:
+			p.bus = stream_data["bus"]
+		else:
+			p.bus = "sfx"
 	
 	p.connect("finished", self, "_on_stream_finished", [p])
 	add_child(p)
 	p.play()
 
+
+func add_button_signals() -> void:
+	for button in get_tree().get_nodes_in_group("button"):
+		if button is BaseButton:
+			if button is OptionButton:
+				button.connect("pressed", self, "_button_press")
+				
+				var popup: PopupMenu = button.get_popup()
+				popup.connect("id_pressed", self, "_button_release")
+			else:
+				button.connect("pressed", self, "_button_click")
 
 func _button_click(_garbage = null) -> void:
 	play("res://assets/sound/button/click1.ogg", {"pitch_scale" : rand_range(0.75, 1.163)})
