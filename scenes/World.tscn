@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://scenes/ui/MyCheckBox.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/ControllableCamera.tscn" type="PackedScene" id=2]
@@ -8,6 +8,13 @@
 [ext_resource path="res://assets/font/default_font.tres" type="DynamicFont" id=6]
 [ext_resource path="res://scenes/ui/MyButton.tscn" type="PackedScene" id=7]
 [ext_resource path="res://assets/font/default_font_medium.tres" type="DynamicFont" id=8]
+[ext_resource path="res://assets/font/TiresiasInfofont-OVA33.ttf" type="DynamicFontData" id=9]
+
+[sub_resource type="DynamicFont" id=1]
+size = 48
+outline_size = 4
+outline_color = Color( 0, 0, 0, 0.294118 )
+font_data = ExtResource( 9 )
 
 [node name="World" type="Control"]
 anchor_right = 1.0
@@ -19,9 +26,13 @@ __meta__ = {
 call_shuffle_positions = true
 
 [node name="ControllableCamera" parent="." instance=ExtResource( 2 )]
-position = Vector2( 640, 360 )
+position = Vector2( 638, 358 )
 
 [node name="InputConfig" parent="." instance=ExtResource( 3 )]
+margin_left = 108.0
+margin_top = 252.0
+margin_right = 108.0
+margin_bottom = 252.0
 
 [node name="Checkboxes" type="Control" parent="."]
 margin_right = 40.0
@@ -32,23 +43,31 @@ __meta__ = {
 }
 
 [node name="NauseatingCamera" parent="Checkboxes" instance=ExtResource( 1 )]
-margin_left = 1338.0
-margin_top = 330.0
-margin_right = 1338.0
-margin_bottom = 330.32
+margin_left = 1574.0
+margin_top = 260.0
+margin_right = 1574.0
+margin_bottom = 260.32
 label_text = "Nauseating Camera"
 warning_text = "DO NOT PRESS THIS"
 setting = "nauseating_camera"
 
 [node name="SecretCheckbox" parent="Checkboxes" instance=ExtResource( 1 )]
-margin_left = -376.0
-margin_top = 136.0
-margin_right = -7.0
-margin_bottom = 174.24
+margin_left = -900.0
+margin_top = -144.0
+margin_right = -531.0
+margin_bottom = -105.76
 rect_scale = Vector2( 0.05, 0.05 )
 count_as_interaction = false
 count_but_not_to_total = true
 label_text = "Secret Checkbox"
+
+[node name="TimerCheckbox" parent="Checkboxes" instance=ExtResource( 1 )]
+margin_left = 686.0
+margin_top = -452.0
+margin_right = 686.0
+margin_bottom = -451.68
+label_text = "Show Timer"
+setting = "show_timer"
 
 [node name="Sliders" type="Control" parent="."]
 margin_right = 40.0
@@ -59,38 +78,38 @@ __meta__ = {
 }
 
 [node name="CamSpeed" parent="Sliders" instance=ExtResource( 4 )]
-anchor_left = -9.25
-anchor_top = 15.3
-anchor_right = -9.02187
-anchor_bottom = 15.3944
+anchor_left = -19.65
+anchor_top = 20.0
+anchor_right = -19.4219
+anchor_bottom = 20.0944
 label_text = "Camera Speed"
 setting = "cam_speed_multiplier"
 
 [node name="CamZoom" parent="Sliders" instance=ExtResource( 4 )]
-anchor_left = 31.3
-anchor_top = 18.95
-anchor_right = 31.5281
-anchor_bottom = 19.0444
+anchor_left = 34.85
+anchor_top = 20.2
+anchor_right = 35.0781
+anchor_bottom = 20.2944
 label_text = "Camera Zoom"
 setting = "cam_zoom_multiplier"
 custom_min_value = 0.1
 custom_max_value = 1.4
 
 [node name="SFXVolume" parent="Sliders" instance=ExtResource( 4 )]
-anchor_left = 4.3
-anchor_top = -4.45
-anchor_right = 4.52812
-anchor_bottom = -4.35556
+anchor_left = -10.8
+anchor_top = -10.45
+anchor_right = -10.5719
+anchor_bottom = -10.3556
 label_text = "SFX Volume"
 setting = "sfx_volume"
 custom_min_value = 0.0
 custom_max_value = 1.0
 
 [node name="MusicVolume" parent="Sliders" instance=ExtResource( 4 )]
-anchor_left = 7.1
-anchor_top = 22.05
-anchor_right = 7.32813
-anchor_bottom = 22.1444
+anchor_left = 5.6
+anchor_top = 22.4
+anchor_right = 5.82813
+anchor_bottom = 22.4944
 label_text = "Music Volume"
 setting = "music_volume"
 custom_min_value = 0.0
@@ -105,20 +124,20 @@ __meta__ = {
 }
 
 [node name="ExitButton" parent="Buttons" instance=ExtResource( 7 )]
-anchor_left = 2.03279
-anchor_top = 9.56522
-anchor_right = 3.37311
-anchor_bottom = 10.4165
+anchor_left = -4.45902
+anchor_top = 5.73913
+anchor_right = -3.11869
+anchor_bottom = 6.59053
 custom_fonts/font = ExtResource( 6 )
 text = "Exit Menu"
 count_as_interaction = false
 press_func = "win"
 
 [node name="ChordButton" parent="Buttons" instance=ExtResource( 7 )]
-anchor_left = 8.68852
-anchor_top = -1.82609
-anchor_right = 10.5862
-anchor_bottom = -0.974783
+anchor_left = 10.3934
+anchor_top = -5.56522
+anchor_right = 12.2911
+anchor_bottom = -4.71391
 custom_fonts/font = ExtResource( 6 )
 text = "Random Chord"
 press_func = "show_random_chord"
@@ -130,6 +149,23 @@ margin_top = 48.0
 margin_right = 42.0
 margin_bottom = 81.0
 custom_fonts/font = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TimerLabel" type="Label" parent="CanvasLayer"]
+visible = false
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -58.0
+margin_top = 32.0
+margin_right = 58.0
+margin_bottom = 49.0
+custom_fonts/font = SubResource( 1 )
+text = "TIME"
+align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
