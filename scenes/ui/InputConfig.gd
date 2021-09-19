@@ -13,6 +13,9 @@ var selected_action: int
 
 var checking_for_inputs: bool = false
 
+var input_cancel_time: int = 0
+var MAX_INPUT_CANCEL_TIME = 10
+
 func _ready() -> void:
 	
 	# cleanse action_list of filthy excluded actions
@@ -45,7 +48,10 @@ func _process(_delta) -> void:
 	action_input_display.text = get_action_input_display_text()
 	
 	press_key_indicator.visible = checking_for_inputs
-
+	
+	if input_cancel_time != 0:
+		input_cancel_time -= 1
+		accept_event()
 
 func _input(event) -> void:
 	
@@ -59,6 +65,8 @@ func _input(event) -> void:
 					checking_for_inputs = false
 					
 					InputMap.action_add_event(action_list[selected_action], event)
+					
+					input_cancel_time = MAX_INPUT_CANCEL_TIME # cancel inputs for that amount of frames
 					accept_event()
 					
 				else: # if key press is escape

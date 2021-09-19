@@ -4,9 +4,13 @@ var interactions: int = 0
 var total_interactions: int = 0
 
 var time: float = 0
-var do_time: bool = true
+var do_time: bool = false
+
+var delete_inputs: bool = true
 
 func _ready():
+	
+	
 	randomize()
 
 func _physics_process(_delta):

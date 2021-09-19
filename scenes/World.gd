@@ -9,11 +9,28 @@ var boundaries: Dictionary = {
 	"left" : -1728.0}
 onready var cam: Camera2D = $ControllableCamera
 
+
+var juice_started: bool = false # starts music and timer when an input is pressed 
+
+
 func _ready() -> void:
 	if call_shuffle_positions:
 		shuffle_positions()
 
 func _process(delta):
+	
+	if juice_started == false: # when an input is pressed
+		for action in InputMap.get_actions():
+			if ! action.begins_with("ui"):
+				if Input.is_action_just_pressed(action):
+					
+					AudioManager.play("res://assets/sound/music/squash_soup.ogg", {"volume_db" : -10, "bus" : "music"})
+					Global.do_time = true
+					
+					juice_started = true
+					continue
+	
+	
 	if cam.global_position.y < boundaries.top:
 		cam.global_position.y = boundaries.bottom
 	elif cam.global_position.y > boundaries.bottom:
@@ -47,5 +64,4 @@ func shuffle_positions() -> void:
 
 
 func _on_World_tree_entered():
-	print("aa")
 	AudioManager.add_button_signals()
