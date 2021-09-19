@@ -6,9 +6,10 @@ onready var click_sound = $ClickSound
 export var custom_min_value: float = 0.071
 export var custom_max_value: float = 0.071
 
-onready var default_value = slider.value
+export var default_value: float = 1
 
 func _ready():
+	slider.value = default_value
 	if custom_min_value != 0.071:
 		slider.min_value = custom_min_value
 	if custom_max_value != 0.071:

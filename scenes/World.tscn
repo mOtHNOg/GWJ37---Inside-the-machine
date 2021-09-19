@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://scenes/ui/MyCheckBox.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/ControllableCamera.tscn" type="PackedScene" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://scenes/ui/MyButton.tscn" type="PackedScene" id=7]
 [ext_resource path="res://assets/font/default_font_medium.tres" type="DynamicFont" id=8]
 [ext_resource path="res://assets/font/TiresiasInfofont-OVA33.ttf" type="DynamicFontData" id=9]
+[ext_resource path="res://default_env.tres" type="Environment" id=10]
 
 [sub_resource type="DynamicFont" id=1]
 size = 48
@@ -86,34 +87,45 @@ label_text = "Camera Speed"
 setting = "cam_speed_multiplier"
 
 [node name="CamZoom" parent="Sliders" instance=ExtResource( 4 )]
-anchor_left = 34.85
-anchor_top = 20.2
-anchor_right = 35.0781
-anchor_bottom = 20.2944
+anchor_left = 42.95
+anchor_top = 17.25
+anchor_right = 43.1781
+anchor_bottom = 17.3444
 label_text = "Camera Zoom"
 setting = "cam_zoom_multiplier"
 custom_min_value = 0.1
 custom_max_value = 1.4
 
 [node name="SFXVolume" parent="Sliders" instance=ExtResource( 4 )]
-anchor_left = -10.8
-anchor_top = -10.45
-anchor_right = -10.5719
-anchor_bottom = -10.3556
+anchor_left = -6.35
+anchor_top = -11.35
+anchor_right = -6.12187
+anchor_bottom = -11.2556
 label_text = "SFX Volume"
 setting = "sfx_volume"
 custom_min_value = 0.0
 custom_max_value = 1.0
 
 [node name="MusicVolume" parent="Sliders" instance=ExtResource( 4 )]
-anchor_left = 5.6
-anchor_top = 22.4
-anchor_right = 5.82813
-anchor_bottom = 22.4944
+anchor_left = 0.7
+anchor_top = 23.9
+anchor_right = 0.92813
+anchor_bottom = 23.9944
 label_text = "Music Volume"
 setting = "music_volume"
 custom_min_value = 0.0
 custom_max_value = 1.0
+
+[node name="Bloom" parent="Sliders" instance=ExtResource( 4 )]
+anchor_left = 22.2
+anchor_top = 21.6
+anchor_right = 22.4281
+anchor_bottom = 21.6944
+label_text = "Bloom Amount"
+setting = "bloom_amount"
+custom_min_value = 0.0
+custom_max_value = 1.0
+default_value = 0.0
 
 [node name="Buttons" type="Control" parent="."]
 margin_right = 122.0
@@ -169,5 +181,8 @@ align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource( 10 )
 
 [connection signal="tree_entered" from="." to="." method="_on_World_tree_entered"]

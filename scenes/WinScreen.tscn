@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://assets/font/TiresiasInfofont-OVA33.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/font/default_font.tres" type="DynamicFont" id=2]
 [ext_resource path="res://scenes/WinScreen.gd" type="Script" id=3]
+[ext_resource path="res://default_env.tres" type="Environment" id=4]
 
 [sub_resource type="DynamicFont" id=1]
 size = 56
@@ -95,6 +96,9 @@ size_flags_vertical = 0
 custom_styles/focus = SubResource( 3 )
 custom_fonts/font = ExtResource( 2 )
 text = "there is no restart button sorry :s"
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource( 4 )
 
 [connection signal="tree_entered" from="." to="." method="_on_WinScreen_tree_entered"]
 [connection signal="pressed" from="VBoxContainer/CenterContainer/Restart" to="." method="_on_RestartButton_pressed"]

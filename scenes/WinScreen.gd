@@ -11,6 +11,10 @@ onready var restart_button = $VBoxContainer/CenterContainer/Restart
 var restart_click_count: int = 0
 const MAX_RESTART_CLICK_COUNT = 10
 
+var bloom_on_finish = Settings.bloom_amount
+const UNBLOOM_SPEED = 1.0
+var env: Environment = load("res://default_env.tres")
+
 func _ready():
 	labels.time.text %= str(stepify(Global.time / 60, 0.1))
 	labels.interactions.text %= str(Global.interactions, " / ", Global.total_interactions)
@@ -19,7 +23,11 @@ func _ready():
 		labels.score.text %= str(stepify(pow(Global.interactions, 2) / ( pow(Global.time / 60, 0.5)) * 100, 0.1))
 	else:
 		labels.score.text %= "0"
+	
+	Settings.apply_bloom = false
 
+func _process(delta):
+	env.glow_bloom = lerp(env.glow_bloom, bloom_on_finish * 0.5, UNBLOOM_SPEED * delta)
 
 func _on_RestartButton_pressed():
 #	get_tree().change_scene("res://scenes/World.tscn")

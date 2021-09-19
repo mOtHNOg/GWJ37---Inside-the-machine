@@ -17,6 +17,10 @@ var sfx_volume: float = 1
 onready var music_bus: int = AudioServer.get_bus_index("music")
 var music_volume: float = 1
 
+var bloom_amount: float = 0
+var apply_bloom: bool = true # gets set to false in win screen
+var env: Environment = load("res://default_env.tres")
+
 func _process(_delta):
 	AudioServer.set_bus_volume_db(sfx_bus, ( 1 - sfx_volume ) * -60 )
 	AudioServer.set_bus_volume_db(music_bus, ( 1 - music_volume ) * -60 )
@@ -26,6 +30,9 @@ func _process(_delta):
 				timer_label.text = str(stepify(Global.time / 60, 0.1))
 			
 			timer_label.visible = show_timer
+	
+	if apply_bloom:
+		env.glow_bloom = bloom_amount
 
 func win() -> void:
 	Global.do_time = false
