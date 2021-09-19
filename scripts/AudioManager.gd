@@ -36,6 +36,9 @@ func play(sound_path: String, stream_data: Dictionary = {}) -> void:
 	add_child(p)
 	p.play()
 
+func stop() -> void:
+	for player in get_children():
+		player.queue_free()
 
 func add_button_signals() -> void:
 	for button in get_tree().get_nodes_in_group("button"):

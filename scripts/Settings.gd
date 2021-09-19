@@ -5,7 +5,6 @@ var cam_speed_multiplier: float = 1
 var cam_zoom_multiplier: float = 1
 
 var nauseating_camera: bool = false
-var bullet_hell: bool = false
 
 onready var world: Control = get_node("/root/World")
 onready var timer_label: Label = get_node("/root/World/CanvasLayer/TimerLabel")
@@ -41,3 +40,17 @@ func win() -> void:
 func show_random_chord(label: Label) -> void:
 	var chord = Global.get_random_chord(floor(rand_range(3, 7)))
 	label.text = str(chord).substr(1, str(chord).length() - 2)
+
+# super gross reset function
+func reset() -> void:
+	cam_speed_multiplier = 1
+	cam_zoom_multiplier = 1
+	
+	nauseating_camera = false
+	
+	show_timer = false
+	
+	sfx_volume = 1
+	music_volume = 1
+	
+	bloom_amount = 1

@@ -42,3 +42,11 @@ func get_random_chord(notes_count: int = 3) -> Array:
 		chord.append(random_note)
 	
 	return chord
+
+# super gross reset function
+func reset() -> void:
+	interactions = 0
+	total_interactions = 0
+	
+	time = 0
+	do_time = false

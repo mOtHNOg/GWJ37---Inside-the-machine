@@ -21,7 +21,6 @@ const MUSIC_FADE_OUT_SPEED = 0.1
 onready var music_bus: int = AudioServer.get_bus_index("music")
 onready var music_volume: float = AudioServer.get_bus_volume_db(music_bus)
 
-
 func _ready():
 	labels.time.text %= str(stepify(Global.time / 60, 0.1))
 	labels.interactions.text %= str(Global.interactions, " / ", Global.total_interactions)
@@ -42,7 +41,12 @@ func _process(delta):
 	print(AudioServer.get_bus_volume_db(music_bus))
 
 func _on_RestartButton_pressed():
+#	Settings.reset()
+#	Global.reset()
+#	AudioManager.stop()
+#
 #	get_tree().change_scene("res://scenes/World.tscn")
+	
 	if restart_click_count <= MAX_RESTART_CLICK_COUNT:
 		restart_button.text = restart_button.text.insert(9, "still ")
 	restart_click_count += 1

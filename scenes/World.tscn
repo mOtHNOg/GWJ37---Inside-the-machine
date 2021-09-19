@@ -145,10 +145,10 @@ count_as_interaction = false
 press_func = "win"
 
 [node name="ChordButton" parent="Buttons" instance=ExtResource( 7 )]
-anchor_left = 10.3934
-anchor_top = -5.56522
-anchor_right = 12.2911
-anchor_bottom = -4.71391
+anchor_left = 11.3279
+anchor_top = -7.73913
+anchor_right = 13.2256
+anchor_bottom = -6.88782
 custom_fonts/font = ExtResource( 6 )
 text = "Random Chord"
 press_func = "show_random_chord"

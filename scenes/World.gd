@@ -15,6 +15,7 @@ var timer_started: bool = false # timer starts when first presses key
 
 
 func _ready() -> void:
+	print("a")
 	if call_shuffle_positions:
 		shuffle_positions()
 

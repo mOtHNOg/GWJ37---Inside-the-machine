@@ -12,4 +12,4 @@ dest_files=[ "res://.import/squash_soup.ogg-aca15f18879221bd9bf838107401116b.ogg
 [params]
 
 loop=true
-loop_offset=1.33
+loop_offset=1.5
