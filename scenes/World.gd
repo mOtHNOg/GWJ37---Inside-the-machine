@@ -10,7 +10,8 @@ var boundaries: Dictionary = {
 onready var cam: Camera2D = $ControllableCamera
 
 
-var juice_started: bool = false # starts music and timer when an input is pressed 
+var music_started: bool = false # music starts when first clicks button
+var timer_started: bool = false # timer starts when first presses key
 
 
 func _ready() -> void:
@@ -19,15 +20,13 @@ func _ready() -> void:
 
 func _process(delta):
 	
-	if juice_started == false: # when an input is pressed
+	if ! timer_started: # when an input is pressed
 		for action in InputMap.get_actions():
 			if ! action.begins_with("ui"):
 				if Input.is_action_just_pressed(action):
-					
-					AudioManager.play("res://assets/sound/music/squash_soup.ogg", {"volume_db" : -10, "bus" : "music"})
 					Global.do_time = true
 					
-					juice_started = true
+					timer_started = true
 					continue
 	
 	
@@ -39,6 +38,14 @@ func _process(delta):
 		cam.global_position.x = boundaries.left
 	elif cam.global_position.x < boundaries.left:
 		cam.global_position.x = boundaries.right
+
+func _input(event):
+	if ! music_started:
+		if event is InputEventMouseButton:
+			if event.button_index == BUTTON_LEFT:
+				music_started = true
+				
+				AudioManager.play("res://assets/sound/music/squash_soup.ogg", {"volume_db" : -10, "bus" : "music"})
 
 func shuffle_positions() -> void:
 	var shuffle_node_parents: Array = [$Checkboxes, $Sliders, $Buttons]

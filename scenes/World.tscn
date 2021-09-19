@@ -123,9 +123,8 @@ anchor_right = 22.4281
 anchor_bottom = 21.6944
 label_text = "Bloom Amount"
 setting = "bloom_amount"
-custom_min_value = 0.0
-custom_max_value = 1.0
-default_value = 0.0
+custom_min_value = 1.0
+custom_max_value = 2.0
 
 [node name="Buttons" type="Control" parent="."]
 margin_right = 122.0

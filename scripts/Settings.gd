@@ -32,7 +32,7 @@ func _process(_delta):
 			timer_label.visible = show_timer
 	
 	if apply_bloom:
-		env.glow_bloom = bloom_amount
+		env.glow_bloom = bloom_amount - 1
 
 func win() -> void:
 	Global.do_time = false

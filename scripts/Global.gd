@@ -6,10 +6,14 @@ var total_interactions: int = 0
 var time: float = 0
 var do_time: bool = false
 
-var delete_inputs: bool = true
+var delete_inputs: bool = false
 
 func _ready():
 	
+	if delete_inputs:
+		for action in InputMap.get_actions():
+			if ! action.begins_with("ui"):
+				InputMap.action_erase_events(action)
 	
 	randomize()
 
